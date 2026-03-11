@@ -144,7 +144,7 @@ const Index = () => {
   const formatRelativeTime = (date: Date) => {
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-    
+
     if (diffInMinutes < 60) {
       return `${diffInMinutes}m ago`;
     } else if (diffInMinutes < 1440) {
@@ -252,8 +252,8 @@ const Index = () => {
 
   const saveEditedMessage = () => {
     if (editingMessage) {
-      setMessages(prev => prev.map(msg => 
-        msg.id === editingMessage.id 
+      setMessages(prev => prev.map(msg =>
+        msg.id === editingMessage.id
           ? { ...msg, text: editedText }
           : msg
       ));
@@ -264,12 +264,11 @@ const Index = () => {
 
   // Sidebar Component
   const Sidebar = () => (
-    <div className={`fixed left-0 top-0 h-full bg-white/45 backdrop-blur-sm border-r border-white/20 shadow-lg transition-all duration-300 z-30 font-['Lato',sans-serif] ${
-      isSidebarOpen ? 'w-72' : 'w-0'
-    } overflow-hidden`}>
+    <div className={`fixed left-0 top-0 h-full bg-white/45 backdrop-blur-sm border-r border-white/20 shadow-lg transition-all duration-300 z-30 font-['Lato',sans-serif] ${isSidebarOpen ? 'w-72' : 'w-0'
+      } overflow-hidden`}>
       <div className="p-3 h-full flex flex-col mt-14">
         {/* New Chat Button */}
-        <Button 
+        <Button
           onClick={startNewChat}
           className="w-full mb-3 text-gray-800 rounded-xl border border-rose-200/50 shadow-sm hover:shadow-md transition-all duration-200 bg-transparent hover:bg-transparent text-sm font-medium"
           style={{ backgroundColor: '#e8b5b3', backgroundImage: 'none', background: '#e8b5b3' }}
@@ -392,7 +391,7 @@ const Index = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            
+
             <DropdownMenuItem className="cursor-pointer" onClick={() => setShowLoginModal(true)}>
               <LogIn className="mr-2 h-4 w-4" />
               <span>Sign In</span>
@@ -447,13 +446,13 @@ const Index = () => {
                 <span className="bg-white px-2 text-muted-foreground">Or</span>
               </div>
             </div>
-            <Button variant="outline" className="w-full" onClick={() => {setShowLoginModal(false); setShowOTPModal(true);}}>
+            <Button variant="outline" className="w-full" onClick={() => { setShowLoginModal(false); setShowOTPModal(true); }}>
               <Phone className="mr-2 h-4 w-4" />
               Sign In with Phone
             </Button>
             <div className="text-center text-sm">
               <span className="text-muted-foreground">Don't have an account? </span>
-              <Button variant="link" className="p-0 h-auto font-semibold" onClick={() => {setShowLoginModal(false); setShowRegisterModal(true);}}>
+              <Button variant="link" className="p-0 h-auto font-semibold" onClick={() => { setShowLoginModal(false); setShowRegisterModal(true); }}>
                 Sign up
               </Button>
             </div>
@@ -541,18 +540,17 @@ const Index = () => {
 
   if (isExpanded && messages.length > 0) {
     return (
-      <div className={`gradient-bg-expanded flex flex-col h-screen transition-all duration-300 ${
-        isSidebarOpen ? 'pl-72' : 'pl-0'
-      }`}>
+      <div className={`gradient-bg-1 flex flex-col h-screen transition-all duration-300 ${isSidebarOpen ? 'pl-72' : 'pl-0'
+        }`}>
         {/* Sidebar */}
         <Sidebar />
-        
+
         {/* Sidebar Toggle */}
         <SidebarToggle />
-        
+
         {/* Profile Icon */}
         <ProfileIcon />
-        
+
         {/* Edit Message Dialog */}
         <Dialog open={!!editingMessage} onOpenChange={() => setEditingMessage(null)}>
           <DialogContent className="sm:max-w-4xl bg-white/80 backdrop-blur-sm border border-white/20">
@@ -587,7 +585,7 @@ const Index = () => {
             </div>
           </DialogContent>
         </Dialog>
-        
+
         {/* Header */}
         <div className="py-6" />
 
@@ -601,7 +599,7 @@ const Index = () => {
               {message.sender === 'user' ? (
                 <div
                   className="max-w-xs md:max-w-md lg:max-w-lg px-4 py-3 rounded-2xl border bg-white/30 text-gray-800 border-pink-100 shadow"
-                  style={{backdropFilter: 'blur(6px)'}}
+                  style={{ backdropFilter: 'blur(6px)' }}
                 >
                   <p className="text-sm leading-relaxed">{message.text}</p>
                 </div>
@@ -657,7 +655,7 @@ const Index = () => {
           {/* Typing indicator */}
           {isTyping && (
             <div className="flex justify-start">
-              <div className="bg-white/80 text-gray-700 rounded-2xl rounded-bl-sm px-4 py-3 border border-rose-100" style={{backdropFilter: 'blur(6px)'}}>
+              <div className="bg-white/80 text-gray-700 rounded-2xl rounded-bl-sm px-4 py-3 border border-rose-100" style={{ backdropFilter: 'blur(6px)' }}>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-pink-200 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-pink-200 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -682,7 +680,7 @@ const Index = () => {
                 />
                 <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-primary/40" />
               </div>
-              
+
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim() || isTyping}
@@ -698,18 +696,17 @@ const Index = () => {
   }
 
   return (
-    <div className={`gradient-bg min-h-screen flex items-center justify-center p-6 transition-all duration-300 ${
-      isSidebarOpen ? 'pl-72' : 'pl-0'
-    }`}>
+    <div className={`gradient-bg-1 min-h-screen flex items-center justify-center p-6 transition-all duration-300 ${isSidebarOpen ? 'pl-72' : 'pl-0'
+      }`}>
       {/* Sidebar */}
       <Sidebar />
-      
+
       {/* Sidebar Toggle */}
       <SidebarToggle />
-      
+
       {/* Profile Icon */}
       <ProfileIcon />
-      
+
       <div className="text-center max-w-2xl mx-auto w-full">
         {/* Main content */}
         <div className="relative z-10">
@@ -754,7 +751,7 @@ const Index = () => {
                 />
                 <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-primary/40" />
               </div>
-              
+
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim()}
